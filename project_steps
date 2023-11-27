@@ -4,7 +4,7 @@ To begin organization, first I created a Final Project directory in my terminal 
 
 #create Final Project directory
 mkdir FinalProject
-![Final Project directory steps.PNG](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/main/Final%20Project%20directory%20steps.PNG)
+![Final Project directory steps.PNG](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c04a582ab02ea4747313aa90a2e7dcb9dbffcfee/Final%20Project%20directory%20steps.PNG)
 
 Then, within that directory, I created a separate directory labeled "Strains."
 
