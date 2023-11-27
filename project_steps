@@ -4,7 +4,7 @@ To begin organization, first I created a Final Project directory in my terminal 
 
 #create Final Project directory
 mkdir FinalProject
-[FinalProject directory](Final Project directory steps.PNG)
+![](Final Project directory steps.PNG)
 
 Then, within that directory, I created a separate directory labeled "Strains."
 
