@@ -1,20 +1,25 @@
 This project involves creating a phylogenetic tree from 17 strains of influenza found in humans.
 To begin organization, first I created a Final Project directory in my terminal on MobaXTerm. 
 
+
 #create Final Project directory
 mkdir FinalProject
 
+
 Then, within that directory, I created a separate directory labeled "Strains."
+
 
 #create Strains directory within FinalProject
 mkdir Strains
+
 
 Then, I imported data for the 17 strains used. All data was retrieved from the NCBI Influenza Virus nucleotide sequences search located at this link: https://www.ncbi.nlm.nih.gov/genomes/FLU/Database/nph-select.cgi?go=database
 The specific filters used for the data were: Human, HA protein, collection date from 2022 in both fields.
 Then, I made text files containing FASTA sequences for each strain. I labeled the strains appropriately with headers matching identifying information in the sequences found on NCBI. 
 The data was input into text files using 'nano' for 17 strains of influenza.
 
-#nucleotide sequence names (17) for files
+
+#nucleotide sequence names for 17 strain files
 A_India_CG-AIIMSR-292_2022_H1N1
 A_Tokyo_13424_2022_H3N2
 A_China_CSKFQ-22-5_2022_H3N8
@@ -33,19 +38,28 @@ A_Victoria_4897_2022_H1N1
 A_Wisconsin_588_2019_H1N1_vacc
 A_Darwin_6_2021_H3N2_vacc
 
+
 Then, I concatenated all sequences in the files into a single file named "all_strains."
-#cat all files into one file (all_strains)
+
+
+#cat all files into one file named all_strains
 cat A_India_CG-AIIMSR-292_2022_H1N1 A_Tokyo_13424_2022_H3N2 A_China_CSKFQ-22-5_2022_H3N8 A_China_ZMD-22-2_2022_H3N8 A_Yangzhou_125_2022_H5N6 A_Alaska_USAFSAM-14036_2022_H1N1 A_Arizona_67_2022_H1N1 A_California_168_2022_H1N1 A_New_York_52_2022_H1N1 A_Texas_80_2022_H1N1 A_Friuli-Venezia_Giulia_USAFSAM-13527_2022_H3N2 A_Rheinland-Pfalz_USAFSAM-13452_2022_H1N1 A_Suffolk_13426_2022_H1N1 A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1 A_Victoria_4897_2022_H1N1 A_Wisconsin_588_2019_H1N1_vacc A_Darwin_6_2021_H3N2_vacc > all_strains
 
-#activate conda environment where mafft/iqtree are (need to be in Lab9 folder to do this)
+
+Then, I activated the conda environment where the mafft and iqtree software installs are located.
+#activate conda environment where mafft/iqtree are (need to be in Lab9 folder to do this or a folder with mafft and iqtree software installs)
 conda activate lab9_path/lab9_conda
 
+
+Then, I specified the path to mafft.
 #mafft path
 /project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/mafft
 
+Then, I specificed the path to iqtree for later use in code.
 #iqtree path
 /project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/iqtree
 
+Then, run mafft.
 #mafft
 mafft --auto all_strains > output.fa
   
