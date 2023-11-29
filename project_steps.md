@@ -1,4 +1,4 @@
-This project involves creating a phylogenetic tree from 17 strains of influenza found in humans.
+This project involves creating a phylogenetic tree from 17 HA segment nucleotide sequences of influenza found in humans.
 To begin organization, first I created a Final Project directory in my terminal. 
 
 ```
