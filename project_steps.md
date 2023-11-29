@@ -76,6 +76,11 @@ Then, I ran iqtree.
 #iqtree
 /project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/iqtree -s output.fa -m HKY -bb 1000 -pre result
 ```
+The output of the iqtree.contree file needed for the phylogenetic tree I saved as follows:
+```
+cat result.contree
+```
+(A_Alaska_USAFSAM-14036_2022_H1N1:0.0045713784,((((A_Arizona_67_2022_H1N1:0.0005712333,(A_New_York_52_2022_H1N1:0.0017160797,A_Texas_80_2022_H1N1:0.0034348686)67:0.0000020787)65:0.0000020787,((A_California_168_2022_H1N1:0.0000064057,A_Victoria_4897_2022_H1N1:0.0005881445)70:0.0000020801,A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1:0.0000020787)84:0.0005631675)90:0.0011814886,A_Suffolk_13426_2022_H1N1:0.0029522434)96:0.0044771878,((A_India_CG-AIIMSR-292_2022_H1N1:0.0000020787,A_Wisconsin_588_2019_H1N1_vacc:0.0000020787)100:0.0074721767,A_Rheinland-Pfalz_USAFSAM-13452_2022_H1N1:0.0074143619)78:0.0035659752)54:0.0016326210,(((A_China_CSKFQ-22-5_2022_H3N8:0.0052482923,A_China_ZMD-22-2_2022_H3N8:0.0085978397)100:0.1140944664,(A_Darwin_6_2021_H3N2_vacc:0.0031525641,(A_Friuli-Venezia_Giulia_USAFSAM-13527_2022_H3N2:0.0035211137,A_Tokyo_13424_2022_H3N2:0.0047360511)95:0.0046053682)100:0.1307725254)100:0.5594455464,A_Yangzhou_125_2022_H5N6:0.2789883607)100:0.2176715540);
 
 Then, I moved to R Studio to make the phylogenetic tree. 
 ```
@@ -88,5 +93,3 @@ shh_tree <- ape::root.phylo(shh_tree, outgroup = "A_Yangzhou_125_2022_H5N6")
 ggtree(shh_tree) + geom_tiplab()+ xlim(0, 1.75)
 ```
 The resulting tree looks as follows:
-
-#cite github in works cited of the paper final
