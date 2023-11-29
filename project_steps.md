@@ -66,12 +66,17 @@ Then, I specified the path to iqtree.
 #iqtree path
 /project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/iqtree
 ```
-Then, I ran mafft.
+Then, I specified the path to the all_strains file.
+```
+#all_strains_path
+/project/stuckert/chngo5/FinalProject/Strains/all_strains
+```
+Then, I ran mafft using the paths from above.
 ```
 #mafft
-/project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/mafft --auto all_strains > output.fa
+/project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/mafft --auto /project/stuckert/chngo5/FinalProject/Strains/all_strains > output.fa
 ```
-Then, I ran iqtree.
+Then, I ran iqtree using the paths specified above.
 ```
 #iqtree
 /project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/iqtree -s output.fa -m HKY -bb 1000 -pre result
