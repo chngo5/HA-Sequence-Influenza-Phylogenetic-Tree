@@ -5,7 +5,7 @@ To begin organization, first I created a Final Project directory in my terminal.
 #create Final Project directory
 mkdir FinalProject
 ```
-![Final Project directory steps.PNG](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c04a582ab02ea4747313aa90a2e7dcb9dbffcfee/Final%20Project%20directory%20steps.PNG)
+![Final Project directory steps](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c4224f41818b42a6f4d65bc4b0067cc358735f4a/steps-for-project/Final%20Project%20directory%20steps.PNG)
 
 Then, within that directory, I created a separate directory labeled "Strains."
 
@@ -13,7 +13,8 @@ Then, within that directory, I created a separate directory labeled "Strains."
 #create Strains directory within FinalProject
 mkdir Strains
 ```
-![make Strains folder in Final Project directory.PNG]
+![make Strains folder in Final Project directory](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c4224f41818b42a6f4d65bc4b0067cc358735f4a/steps-for-project/make%20Strains%20folder%20in%20Final%20Project%20directory.PNG)
+
 Then, I imported data for the 17 strains used. All data was retrieved from the NCBI Influenza Virus nucleotide sequences search located at this link: https://www.ncbi.nlm.nih.gov/genomes/FLU/Database/nph-select.cgi?go=database
 
 The specific filters used for the data were: Human for Host, HA for Segment, 2022 in both Collection Date fields. Other fields were varied to collect needed sequences.
@@ -50,11 +51,17 @@ Then, I concatenated all sequences in the files above into a single file named "
 cat A_India_CG-AIIMSR-292_2022_H1N1 A_Tokyo_13424_2022_H3N2 A_China_CSKFQ-22-5_2022_H3N8 A_China_ZMD-22-2_2022_H3N8 A_Yangzhou_125_2022_H5N6 A_Alaska_USAFSAM-14036_2022_H1N1 A_Arizona_67_2022_H1N1 A_California_168_2022_H1N1 A_New_York_52_2022_H1N1 A_Texas_80_2022_H1N1 A_Friuli-Venezia_Giulia_USAFSAM-13527_2022_H3N2 A_Rheinland-Pfalz_USAFSAM-13452_2022_H1N1 A_Suffolk_13426_2022_H1N1 A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1 A_Victoria_4897_2022_H1N1 A_Wisconsin_588_2019_H1N1_vacc A_Darwin_6_2021_H3N2_vacc > all_strains
 ```
 
+![Strains Folder with all files](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c4224f41818b42a6f4d65bc4b0067cc358735f4a/steps-for-project/StrainsFolderAllFiles.PNG)
+
 Then, I activated the conda environment where the mafft and iqtree software installs are located.
 ```
 #activate conda environment with mafft/iqtree
 conda activate lab9_path/lab9_conda
 ```
+
+![change directory to the conda environment to activate](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c4224f41818b42a6f4d65bc4b0067cc358735f4a/steps-for-project/cd%20to%20conda%20environment_activate.PNG)
+
+![change directory back to FinalProject directory](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c4224f41818b42a6f4d65bc4b0067cc358735f4a/steps-for-project/cd%20back%20to%20FinalProject.PNG)
 
 Then, I specified the path to mafft.
 ```
@@ -98,3 +105,4 @@ shh_tree <- ape::root.phylo(shh_tree, outgroup = "A_Yangzhou_125_2022_H5N6")
 ggtree(shh_tree) + geom_tiplab()+ xlim(0, 1.75)
 ```
 The resulting tree looks as follows:
+![Phylogenetic Tree](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c4224f41818b42a6f4d65bc4b0067cc358735f4a/steps-for-project/Final%20Tree%20for%20Phylo%20Bioinfo%20Project.PNG)
