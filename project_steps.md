@@ -15,11 +15,14 @@ mkdir Strains
 ```
 ![make Strains folder in Final Project directory.PNG]
 Then, I imported data for the 17 strains used. All data was retrieved from the NCBI Influenza Virus nucleotide sequences search located at this link: https://www.ncbi.nlm.nih.gov/genomes/FLU/Database/nph-select.cgi?go=database
-The specific filters used for the data were: Human, HA protein, collection date from 2022 in both fields.
-Then, I made text files containing FASTA sequences for each strain. I labeled the strains appropriately with headers matching identifying information in the sequences found on NCBI. 
-The data was input into text files using 'nano' for 17 strains of influenza.
 
+The specific filters used for the data were: Human for Host, HA for Segment, 2022 in both Collection Date fields. Other fields were varied to collect needed sequences.
 
+Then, I made text files containing the FASTA sequences for each strain. I labeled the strains with headers matching identifying information in the sequences found on NCBI.
+
+The data was input into text files using 'nano' for 17 HA nucleotide sequences.
+
+```
 #nucleotide sequence names for 17 strain files
 A_India_CG-AIIMSR-292_2022_H1N1
 A_Tokyo_13424_2022_H3N2
@@ -38,52 +41,44 @@ A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1
 A_Victoria_4897_2022_H1N1
 A_Wisconsin_588_2019_H1N1_vacc
 A_Darwin_6_2021_H3N2_vacc
+```
 
+Then, I concatenated all sequences in the files above into a single file named "all_strains."
 
-Then, I concatenated all sequences in the files into a single file named "all_strains."
-
-
+```
 #cat all files into one file named all_strains
 cat A_India_CG-AIIMSR-292_2022_H1N1 A_Tokyo_13424_2022_H3N2 A_China_CSKFQ-22-5_2022_H3N8 A_China_ZMD-22-2_2022_H3N8 A_Yangzhou_125_2022_H5N6 A_Alaska_USAFSAM-14036_2022_H1N1 A_Arizona_67_2022_H1N1 A_California_168_2022_H1N1 A_New_York_52_2022_H1N1 A_Texas_80_2022_H1N1 A_Friuli-Venezia_Giulia_USAFSAM-13527_2022_H3N2 A_Rheinland-Pfalz_USAFSAM-13452_2022_H1N1 A_Suffolk_13426_2022_H1N1 A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1 A_Victoria_4897_2022_H1N1 A_Wisconsin_588_2019_H1N1_vacc A_Darwin_6_2021_H3N2_vacc > all_strains
-
+```
 
 Then, I activated the conda environment where the mafft and iqtree software installs are located.
-#activate conda environment where mafft/iqtree are (need to be in Lab9 folder to do this or a folder with mafft and iqtree software installs)
+```
+#activate conda environment with mafft/iqtree
 conda activate lab9_path/lab9_conda
-
+```
 
 Then, I specified the path to mafft.
+```
 #mafft path
 /project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/mafft
-
-Then, I specificed the path to iqtree for later use in code.
+```
+Then, I specified the path to iqtree.
+```
 #iqtree path
 /project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/iqtree
-
-Then, run mafft.
+```
+Then, I ran mafft.
+```
 #mafft
-mafft --auto all_strains > output.fa
-  
-#cat files with outgroup included
-cat A_India_CG-AIIMSR-292_2022_H1N1 A_Tokyo_13424_2022_H3N2 A_China_CSKFQ-22-5_2022_H3N8 A_China_ZMD-22-2_2022_H3N8 A_Yangzhou_125_2022_H5N6 A_Alaska_USAFSAM-14036_2022_H1N1 A_Arizona_67_2022_H1N1 A_California_168_2022_H1N1 A_New_York_52_2022_H1N1 A_Texas_80_2022_H1N1 A_Friuli-Venezia_Giulia_USAFSAM-13527_2022_H3N2 A_Rheinland-Pfalz_USAFSAM-13452_2022_H1N1 A_Suffolk_13426_2022_H1N1 A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1 A_Victoria_4897_2022_H1N1 A_Wisconsin_588_2019_H1N1_vacc A_Darwin_6_2021_H3N2_vacc A_American_kestrel_Peru_A273_2022_H5N1 > combined_strains.fa
+/project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/mafft --auto all_strains > output.fa
+```
+Then, I ran iqtree.
+```
+#iqtree
+/project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/iqtree -s output.fa -m HKY -bb 1000 -pre result
+```
 
-#mafft with outgroup included
-/project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/mafft --auto /project/stuckert/chngo5/FinalProject/Strains/combined_strains.fa > output_result.fa
-
-#iqtree with outgroup included
-/project/stuckert/chngo5/Lab9/lab9_path/lab9_conda/bin/iqtree -s output_result.fa -m HKY -bb 1000 -pre result
-
-#cat result.contree (outgroup included)
-(A_India_CG-AIIMSR-292_2022_H1N1:0.0000020787,(((((((A_Tokyo_13424_2022_H3N2:0.0047380289,A_Friuli-Venezia_Giulia_USAFSAM-13527_2022_H3N2:0.0035204556)96:0.0046111426,A_Darwin_6_2021_H3N2_vacc:0.0031476089)100:0.1283281251,(A_China_CSKFQ-22-5_2022_H3N8:0.0052343871,A_China_ZMD-22-2_2022_H3N8:0.0086157876)100:0.1168359909)100:0.5611060006,(A_Yangzhou_125_2022_H5N6:0.0068800914,A_American_kestrel_Peru_A273_2022_H5N1:0.0205140688)100:0.2739699185)100:0.2196156622,A_Alaska_USAFSAM-14036_2022_H1N1:0.0045731744)55:0.0016318750,(((A_Arizona_67_2022_H1N1:0.0005712806,(A_New_York_52_2022_H1N1:0.0017162276,A_Texas_80_2022_H1N1:0.0034351676)68:0.0000020787)55:0.0000020787,((A_California_168_2022_H1N1:0.0005637380,A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1:0.0000020787)43:0.0000020801,A_Victoria_4897_2022_H1N1:0.0005881987)65:0.0000058747)88:0.0011815091,A_Suffolk_13426_2022_H1N1:0.0029528450)98:0.0044756185)74:0.0035669622,A_Rheinland-Pfalz_USAFSAM-13452_2022_H1N1:0.0074173343)99:0.0074716475,A_Wisconsin_588_2019_H1N1_vacc:0.0000020787);
-
-#R studio tree code (with outgroup)
-library(ape)
-library(ggtree)
-shh_tree <- "(A_India_CG-AIIMSR-292_2022_H1N1:0.0000020787,(((((((A_Tokyo_13424_2022_H3N2:0.0047380289,A_Friuli-Venezia_Giulia_USAFSAM-13527_2022_H3N2:0.0035204556)96:0.0046111426,A_Darwin_6_2021_H3N2_vacc:0.0031476089)100:0.1283281251,(A_China_CSKFQ-22-5_2022_H3N8:0.0052343871,A_China_ZMD-22-2_2022_H3N8:0.0086157876)100:0.1168359909)100:0.5611060006,(A_Yangzhou_125_2022_H5N6:0.0068800914,A_American_kestrel_Peru_A273_2022_H5N1:0.0205140688)100:0.2739699185)100:0.2196156622,A_Alaska_USAFSAM-14036_2022_H1N1:0.0045731744)55:0.0016318750,(((A_Arizona_67_2022_H1N1:0.0005712806,(A_New_York_52_2022_H1N1:0.0017162276,A_Texas_80_2022_H1N1:0.0034351676)68:0.0000020787)55:0.0000020787,((A_California_168_2022_H1N1:0.0005637380,A_Rheinland-Pfalz_USAFSAM-13689_2022_H1N1:0.0000020787)43:0.0000020801,A_Victoria_4897_2022_H1N1:0.0005881987)65:0.0000058747)88:0.0011815091,A_Suffolk_13426_2022_H1N1:0.0029528450)98:0.0044756185)74:0.0035669622,A_Rheinland-Pfalz_USAFSAM-13452_2022_H1N1:0.0074173343)99:0.0074716475,A_Wisconsin_588_2019_H1N1_vacc:0.0000020787);"
-shh_tree <- read.tree(text=shh_tree)
-shh_tree <- ape::root.phylo(shh_tree, outgroup = "A_Yangzhou_125_2022_H5N6")
-ggtree(shh_tree) + geom_tiplab()+ xlim(0, 1.75)
-
+Then, I moved to R Studio to make the phylogenetic tree. 
+```
 #R studio with 17 strains
 library(ape)
 library(ggtree)
@@ -91,6 +86,7 @@ shh_tree <- "(A_Alaska_USAFSAM-14036_2022_H1N1:0.0045713785,((((A_Arizona_67_202
 shh_tree <- read.tree(text=shh_tree)
 shh_tree <- ape::root.phylo(shh_tree, outgroup = "A_Yangzhou_125_2022_H5N6")
 ggtree(shh_tree) + geom_tiplab()+ xlim(0, 1.75)
-
+```
+The resulting tree looks as follows:
 
 #cite github in works cited of the paper final
