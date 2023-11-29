@@ -1,18 +1,19 @@
 This project involves creating a phylogenetic tree from 17 strains of influenza found in humans.
-To begin organization, first I created a Final Project directory in my terminal on MobaXTerm. 
+To begin organization, first I created a Final Project directory in my terminal. 
 
-
+```
 #create Final Project directory
 mkdir FinalProject
-[![Final Project directory steps.PNG]](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c04a582ab02ea4747313aa90a2e7dcb9dbffcfee/Final%20Project%20directory%20steps.PNG)
+```
+![Final Project directory steps.PNG](https://github.com/chngo5/HA-Sequence-Influenza-Phylogenetic-Tree/blob/c04a582ab02ea4747313aa90a2e7dcb9dbffcfee/Final%20Project%20directory%20steps.PNG)
 
 Then, within that directory, I created a separate directory labeled "Strains."
 
-
+```
 #create Strains directory within FinalProject
 mkdir Strains
-
-
+```
+![make Strains folder in Final Project directory.PNG]
 Then, I imported data for the 17 strains used. All data was retrieved from the NCBI Influenza Virus nucleotide sequences search located at this link: https://www.ncbi.nlm.nih.gov/genomes/FLU/Database/nph-select.cgi?go=database
 The specific filters used for the data were: Human, HA protein, collection date from 2022 in both fields.
 Then, I made text files containing FASTA sequences for each strain. I labeled the strains appropriately with headers matching identifying information in the sequences found on NCBI. 
